@@ -1,0 +1,68 @@
+send_follow_me:
+  name: Send Follow Me
+  description: Send a Midea Follow Me IR command through a Moes UFO-R11 (TS1201) or similar ZHA-connected IR blaster device.
+  fields:
+    device_id:
+      name: Device ID
+      description: ZHA device entity ID (e.g., switch.moes_ufo_r11_switch)
+      required: true
+      example: "switch.moes_ufo_r11_switch"
+      selector:
+        entity:
+          integration: zha
+          domain: switch
+    temperature:
+      name: Temperature
+      description: Temperature value to send
+      required: true
+      example: 22.5
+      selector:
+        number:
+          mode: box
+          min: 0
+          max: 99
+          step: 0.5
+    use_fahrenheit:
+      name: Use Fahrenheit
+      description: Use Fahrenheit scale instead of Celsius
+      required: false
+      default: false
+      selector:
+        boolean: {}
+    beeper:
+      name: Beeper
+      description: Enable beeper feedback on the device
+      required: false
+      default: false
+      selector:
+        boolean: {}
+
+debug_follow_me:
+  name: Debug Follow Me
+  description: Debug service to display the final Tuya IR payload used by TS1201
+  fields:
+    temperature:
+      name: Temperature
+      description: Temperature value to evaluate
+      required: true
+      example: 22.5
+      selector:
+        number:
+          mode: box
+          min: 0
+          max: 99
+          step: 0.1
+    use_fahrenheit:
+      name: Use Fahrenheit
+      description: Use Fahrenheit scale instead of Celsius
+      required: false
+      default: false
+      selector:
+        boolean: {}
+    beeper:
+      name: Beeper
+      description: Enable beeper feedback on the device
+      required: false
+      default: false
+      selector:
+        boolean: {}
