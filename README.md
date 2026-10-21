@@ -1,9 +1,9 @@
 # ZHA Midea Follow Me
 
 A Home Assistant custom integration that sends the **Midea "Follow Me"** IR command
-to a Midea air conditioner through a ZHA-connected IR blaster (e.g. the Moes
-UFO-R11 / TS1201), so the AC can be set to the temperature the Home Assistant
-sensor reports.
+to a Midea air conditioner (tested with Midea PortaSplit) through a ZHA-connected IR
+blaster (e.g. the Moes UFO-R11 / TS1201), so the AC can be set to the temperature the
+Home Assistant sensor reports.
 
 The integration builds the Midea protocol packet, converts it to raw IR timings,
 encodes those into the Tuya IR format the TS1201 expects, and sends it over the
