@@ -60,7 +60,7 @@ ZHA *Zosung IR Control* cluster (`0xE004`).
 ### HACS
 
 This integration is not published to HACS. If you want to manage it with HACS,
-add this repository as a [HACS custom repository](https://hacs.xyz/docs/repository)
+add this repository as a [HACS custom repository](https://hacs.xyz/docs/faq/custom_repositories/)
 and make sure the integration lives in `custom_components/zha_midea_follow_me`.
 
 ---
