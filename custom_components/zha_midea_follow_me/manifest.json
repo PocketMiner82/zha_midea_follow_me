@@ -2,7 +2,7 @@
   "domain": "zha_midea_follow_me",
   "name": "ZHA Midea Follow Me",
   "version": "1.2.0",
-  "documentation": "https://github.com/user/zha_midea_follow_me",
+  "documentation": "https://github.com/PocketMiner82/zha_midea_follow_me",
   "dependencies": [
     "zha"
   ],

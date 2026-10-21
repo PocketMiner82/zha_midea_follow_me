@@ -1,0 +1,7 @@
+{
+  "name": "ZHA Midea Follow Me",
+  "content_in_root": false,
+  "render_readme": true,
+  "homeassistant": "2024.11.0",
+  "zip_release": false
+}
