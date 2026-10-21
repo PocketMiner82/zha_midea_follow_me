@@ -269,3 +269,21 @@ It requires the `pyscript` integration and sends the command through the
 `zha.issue_zigbee_cluster_command` service, which is admin-only and therefore
 cannot be used from a normal user account. The custom integration in
 `custom_components/` supersedes it.
+
+---
+
+## Credits
+
+This integration is heavily inspired by the `midea_ac.follow_me` action of
+[ESPHome](https://esphome.io/components/midea_ac.html). The Follow Me packet
+and the way it is expanded into raw IR timings were translated from the
+ESPHome implementation (`MideaProtocol::encode()`) to Python.
+
+The conversion of the raw IR timings into the Tuya IR stream format was taken
+from [vills' gist](https://gist.github.com/vills/590c154b377ac50acab079328e4ddaf9),
+which is itself based on the incredible work of:
+
+- [@mildsunrise](https://gist.github.com/mildsunrise/1d576669b63a260d2cff35fda63ec0b5)
+- [@elupus](https://github.com/elupus/irgen)
+
+Thank you!
