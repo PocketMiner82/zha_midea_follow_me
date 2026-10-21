@@ -1,16 +1,23 @@
 send_follow_me:
   name: Send Follow Me
   description: Send a Midea Follow Me IR command through a Moes UFO-R11 (TS1201) or similar ZHA-connected IR blaster device.
+  target:
+    entity:
+      integration: zha
+      domain:
+        - switch
+        - light
+        - fan
+    device:
+      integration: zha
   fields:
-    device_id:
-      name: Device ID
-      description: ZHA device entity ID (e.g., switch.moes_ufo_r11_switch)
-      required: true
-      example: "switch.moes_ufo_r11_switch"
+    ieee:
+      name: IEEE address
+      description: IEEE address of the IR blaster (e.g., 00:0d:6f:00:05:7d:2d:34). Only needed when the blaster cannot be targeted with an entity, device or area.
+      required: false
+      example: "00:0d:6f:00:05:7d:2d:34"
       selector:
-        entity:
-          integration: zha
-          domain: switch
+        text:
     temperature:
       name: Temperature
       description: Temperature value to send

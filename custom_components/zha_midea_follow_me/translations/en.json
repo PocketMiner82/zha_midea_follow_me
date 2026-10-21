@@ -1,0 +1,29 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "This IR blaster is already configured.",
+      "no_ir_devices": "No ZHA device with the Zosung IR Control cluster (0xE004) was found. Make sure the IR blaster is paired with ZHA.",
+      "reconfigure_successful": "The IR blaster was updated successfully.",
+      "zha_not_ready": "The ZHA integration is not ready yet. Please try again."
+    },
+    "error": {
+      "unknown": "Unexpected error."
+    },
+    "step": {
+      "reconfigure": {
+        "data": {
+          "ieee": "IR blaster"
+        },
+        "description": "Select the ZHA IR blaster that should receive the Midea Follow Me commands.",
+        "title": "Change the IR blaster"
+      },
+      "user": {
+        "data": {
+          "ieee": "IR blaster"
+        },
+        "description": "Select the ZHA IR blaster that should receive the Midea Follow Me commands.",
+        "title": "Add ZHA Midea Follow Me"
+      }
+    }
+  }
+}

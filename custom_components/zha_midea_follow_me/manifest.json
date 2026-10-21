@@ -1,10 +1,13 @@
 {
   "domain": "zha_midea_follow_me",
   "name": "ZHA Midea Follow Me",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "documentation": "https://github.com/user/zha_midea_follow_me",
-  "dependencies": ["zha"],
+  "dependencies": [
+    "zha"
+  ],
   "codeowners": [],
   "requirements": [],
-  "iot_class": "local_push"
+  "iot_class": "local_push",
+  "config_flow": true
 }
