@@ -186,19 +186,60 @@ Midea Follow Me Debug:
 
 ## Automation example
 
-Keep a bedroom in sync with the temperature reported by a room sensor:
+Keep a room in sync with the temperature reported by a sensor in that room.
+Also uses a hysteresis of 0.5 degrees to prevent cycling.
+
+Requires the [Saver](https://github.com/piotrmachowski/home-assistant-custom-components-saver) component to store variables.
 
 ```yaml
-automation:
-  - alias: "Sync bedroom AC with bedroom sensor"
-    triggers:
-      - trigger: state
-        entity_id: sensor.bedroom_temperature
-        for: "00:05:00"
-    actions:
-      - action: zha_midea_follow_me.send_follow_me
-        data:
-          temperature: "{{ states('sensor.bedroom_temperature') | float }}"
+alias: Midea PortaSplit Follow Me
+description: ''
+triggers:
+  - trigger: time_pattern
+    minutes: /3
+conditions:
+  - condition: state
+    entity_id: climate.midea_portasplit
+    state:
+      - cool
+      - heat
+actions:
+  - variables:
+      current_temp: '{{ states(''sensor.temperature_upstairs_temperature'') | float(0) }}'
+      last_sent: '{{ saver.variable(''last_sent_temp'') | default(-999, true) | float }}'
+      temp_diff: '{{ (current_temp - last_sent) | abs }}'
+      rounded_temp: '{{ current_temp | round }}'
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: '{{ temp_diff >= 0.5 and rounded_temp != last_sent | round }}'
+        sequence:
+          - action: saver.set_variable
+            data:
+              name: last_sent_temp
+              value: '{{ current_temp }}'
+          - action: zha_midea_follow_me.send_follow_me
+            metadata: {}
+            target:
+              entity_id: switch.moes_ufo_r11
+            data:
+              use_fahrenheit: false
+              beeper: false
+              temperature: '{{ rounded_temp }}'
+      - conditions:
+          - condition: template
+            value_template: '{{ last_sent != -999 }}'
+        sequence:
+          - action: zha_midea_follow_me.send_follow_me
+            metadata: {}
+            target:
+              entity_id: switch.moes_ufo_r11
+            data:
+              use_fahrenheit: false
+              beeper: false
+              temperature: '{{ last_sent | round }}'
+mode: single
+
 ```
 
 ---
